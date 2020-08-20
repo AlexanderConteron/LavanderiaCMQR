@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesion</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+   
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">LAVANDERIA CMRQ</a>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item logged-out" style="display: none"> 
+              <a class="nav-link" href="# " data-toggle="modal" data-target="#iniciarSesionmodal">Iniciar Sesion</a>
+            </li>
+            <li class="nav-item logged-out" style="display: none">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#registrarmodal">Registrarse</a>
+            </li>
+            <li class="nav-item logged-in" style="display: none">
+                <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+              </li>
+              
+           
+          </ul>
+        </div>
+      </nav>
+
+      <div id="saludos1" style="display: block">
+
+      </div>
+      <div id="foto2" >
+
+      </div>
+
+      
+
+
+      <!--VENTANA MODAL 1-->
+      <div class="modal fade" id="registrarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormregistroUsuario">
+                  <div id="FormGroup">
+                    <input type="text" id="email" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave1" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <div id="FormGroup" style="width: 170px;">
+                  <label for=""class="form-control">Cargo  <select name="form1" id="combobox1" style=" border: 0px; " >
+                    <option>Empleado</option>
+                    <option>Cliente</option></label>
+                  </select>
+                  </div>
+                  <br>
+                  
+
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <div class="modal-footer">
+             
+                </div> 
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <!--VENTANA MODAL 2-->
+      <div class="modal fade" id="iniciarSesionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormIniciarSesionUsuario">
+                <div id="FormGroup">
+                    <input type="text" id="email1" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave11" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <button style="margin-left: 38%;" type="submit" class="btn btn-primary ">Iniciar Sesion</button>
+                  <br>
+                  <br>
+                  <div style="margin-left: 36%;">
+                      <button id="botonFacebook" type="button" style=" margin-left: 0%;width: 60px;height:60px; background-image: url(iconfinder_facebook_386622.png);
+                  background-size: cover;border: 0px ;
+                    "></button> &nbsp;
+                    <button id="botonGoogle" type="button" style="width: 60px;height:60px; background-image: url(iconfinder_6_-_Google_Plus_1775164.png);
+                  background-size: cover;border: 0px ;
+                    "></button>
+                    </div>
+                    
+                  
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script >
+  
+</script>
+<script src="firebase.js"></script>
+<script src="login.js"></script>
+<h1 id="titular"></h1>
+<p></p>
+<p></p>
+
+</body>
+
+
+    <aside id="padre1" >
+        <div id="caja5">PRINCIPAL</div>
+        <div id="caja6">SERVICIOS</div>
+        <div id="caja7">EVENTOS</div>
+        <div id="caja8">SALIDA</div>
+        <div id = "volver"></div>
+    </aside>
+  
+  
+</div>
+<br>
+<footer style="background-color:aliceblue; padding-bottom:6px ; padding-top: 7px; text-align: center;">
+  &copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+  <br>
+  <medium >Lavanderia CMRQ</medium>
+  
+</footer>
+</html>

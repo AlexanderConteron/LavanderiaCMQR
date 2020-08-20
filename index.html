@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h5>LAVANDERIA CMRQ</h5>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item logged-out"> 
+              <a class="nav-link" href="# " data-toggle="modal" data-target="#iniciarSesionmodal">Iniciar Sesion</a>
+            </li>
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#registrarmodal">Registrarse</a>
+            </li>           
+          </ul>
+        </div>
+      </nav>
+
+
+      
+
+
+      <!--VENTANA MODAL 1-->
+      <div class="modal fade" id="registrarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: px;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormregistroUsuario" >
+                  <div id="FormGroup" >
+                    <input type="text" id="email" class="form-control" placeholder="Correo Electronico" required="" >
+                    
+                  </div>
+                  <div id="FormGroup"style="padding-top: 5px;">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required="">
+                    
+                  </div>
+                  <div id="FormGroup"style="padding-top: 5px;">
+                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" required="">
+                    
+                  </div>
+                  <div id="FormGroup"style="padding-top: 5px;">
+                    <input type="password" id="clave1" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <div id="FormGroup" style="width: 100%; padding-top: 5px;">
+                  <label for=""class="form-control" >Cargo  <select name="form1" id="combobox1" style=" border: 0px; " >
+                    <option>Empleado</option>
+                    <option>Cliente</option></label>
+
+                  </select>
+                
+                  </div>
+                  
+                  <div id="FormGroup" style="width: 100%; padding-top: 5px;">
+                    <label for="" class="form-control" style="text-align: center;">Seleccione su direccion</label>  
+                    <div id="myMap" style="height: 150px; width: 100%;"></div>
+                  </div >
+                  
+
+                  <button type="submit" class="btn btn-primary"  style="width: 25%; padding-top: 5px; margin-left: 75%;" >Guardar</button>
+                  <div class="modal-footer">
+                    
+                </div> 
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <!--VENTANA MODAL 2-->
+      <div class="modal fade" id="iniciarSesionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormIniciarSesionUsuario">
+                <div id="FormGroup">
+                    <input type="text" id="email1" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave11" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <button style="margin-left: 38%;" type="submit" class="btn btn-primary ">Iniciar Sesion</button>
+                  <br>
+                  <br>
+                  <div style="margin-left: 36%;">
+                      <button id="botonFacebook" type="button" style=" margin-left: 0%;width: 60px;height:60px; background-image: url(iconfinder_facebook_386622.png);
+                  background-size: cover;border: 0px ;
+                    "></button> &nbsp;
+                    <button id="botonGoogle" type="button" style="width: 60px;height:60px; background-image: url(iconfinder_6_-_Google_Plus_1775164.png);
+                  background-size: cover;border: 0px ;
+                    "></button>
+                    </div>
+                    
+                  
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="modal fade" id="modal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 7%;">
+        <div class="modal-dialog" style="padding-left: 5%;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!--<h5 class="modal-title" id="exampleModalLabel">Estado</h5>-->
+              <label for="" id="exampleModalLabel" >Estado</label>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+              <label for="" id="labelExito" >Correcto</label>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+<script src="login2.js"></script>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+<script src="map.js"></script>
+
+
+<p></p>
+
+</body>
+<br>
+<aside id="padre1" >
+
+  <div id="caja5">
+    <div id="padre4">
+      <br>
+      
+      <h4>COMO FUNCIONA?</h4>
+  </div>
+    <div id="padre2">
+      <div id="caja9">
+        <img src="imagenes/iconfinder_Computer_display_monitor_television_tv_screen_1886824.png" style="width: 60%;">
+        <br>
+        <p>1</p>
+        <medium>Registrate y ponte en contacto</medium>
+      </div>
+    <div id="caja10">
+      <img src="imagenes/iconfinder_Delivery_383995.png" style="width: 60%;">
+      <p>2</p>
+      <medium>Selecciona tu direccion y pasamos por tu ropa</medium>
+    </div>
+    <div id="caja11">
+      <img src="imagenes/iconfinder_neck-tie_532629 (1).png" style="width: 60%;">
+      <p>3</p>
+      <medium>Te devolvemos la ropa limpia</medium>
+    </div>
+  </div>
+  <div id="padre3" >
+    <small>Contactanos desde la comodidad de tu hogar para que tengas tu ropa limpia con calidad</small>
+  </div>
+    
+  </div>
+  
+  <div id="caja7">
+    <br>
+    
+  <h4>SERVICIOS</h4>
+  <br>
+  
+    <li >Servicio a domicilio</li>
+    <br>
+  <img src="imagenes/iconfinder_Construction_home_protection_6588981.png" style="width: 25%;" >    
+    <li >Lavanderia y Tintoreria</li>
+    <br>
+<img src="imagenes/iconfinder_wedding_hand_drawn_icon_-14_3250824.png"  style="width: 25%;">
+    <br>
+    <li >Limpieza del hogar</li>
+    <br>
+    <img src="imagenes/iconfinder_Laundry-08_4093623.png"  style="width: 25%;">
+  
+  </div>
+  <div id="caja8">
+    <br>
+    <h4>NOSOTROS</h4>
+    <br>
+    
+    <p style="text-align: justify;  padding-right: 10%; padding-left: 10%;"> Somos una empresa especializada en ofrecer calidad en el servicio de lavado de sus prendas, 
+       con suministros de última tecnología y respetando las normas ambientales. <br> <br>
+       Un concepto de lavandería diferente donde tú eres lo más importante.
+      </p>
+       
+       
+       <img src="imagenes/agua-logo.png" style="width: 50%;">
+  </div>
+  
+</aside>
+<br>
+
+</div>
+<footer style="background-color:aliceblue;padding-bottom:6px ; padding-top: 6px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>

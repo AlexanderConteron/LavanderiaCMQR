@@ -1,0 +1,130 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#padre1,#ppadre1{
+    display: flex;
+    flex-wrap: wrap;
+    height: 110%;
+    align-items: stretch;
+}
+
+#caja14{
+    display: flex;
+    flex-wrap: wrap;
+    height: 250px;
+    align-items: stretch;
+    position: initial;
+}
+
+#bloque1{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    align-items: stretch;
+    
+}
+#caja24,#caja28,#caja25{
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    align-items: stretch;
+    
+}
+
+
+#padre2{
+    display: flex;
+    flex-wrap: wrap;
+    height: 55%;
+    align-items: stretch;
+    
+}
+#pgbloque1{
+    display: flex;
+    flex-wrap: wrap;
+    height: 55%;
+    align-items: stretch;
+    
+}
+
+#padre1 > div{
+    margin: 20px;
+    text-align: center;
+    background-color:white;
+    opacity:0.93;
+    filter:alpha(opacity=60);
+    min-width: 250px;
+    border-radius: 16px 16px 16px 16px;
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+}
+#hola1{
+    height: 10px;
+}
+
+
+#caja13,#caja14,#caja15,#caja19,#caja20,#caja21,#caja22,#caja23,#caja26,#caja27,#caja29,#caja30,#bloque2,#bloque3,#bloque5,#bloque6,#Hola1,#abloque3,#abloque2,#pgbloque4,#pgbloque3,#pgbloque2,#abloque4,#abloque5{
+    margin: 20px;
+    text-align: center;
+    background-color:white;
+    opacity:0.93;
+    filter:alpha(opacity=60);
+    min-width: 250px;
+    border-radius: 16px 16px 16px 16px;
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+}
+#caja7,#caja8,#caja9,#caja10,#caja11,#caja13,#caja16,#caja17,#caja18,#caja19,#caja20,#caja21,#caja22,#caja26,#caja29,#bloque3,#bloque2,#bloque5,#bloque6,#Hola1,#abloque2,#abloque3,#abloque4,#abloque5{
+    flex: 1;
+    
+}
+#caja5,#caja12,#caja23,#caja27,#caja30{
+    flex: 2;
+    
+}
+#pgbloque2,#pgbloque4{
+    flex: 1;
+    height: 0px;
+}
+#pgbloque3{
+    flex: 2;
+}
+
+#padre2 > div{
+    min-width: 50px;
+}  
+
+
+
+#padre3{
+    /*color:#FF0000 ;*/
+    font-size:larger;
+    padding-right: 10%;
+    flex-wrap: wrap;
+    padding-left: 10%;
+    height:20%;
+}
+#padre4{
+    /*color:#FF0000 ;*/
+    font-size:larger;
+    height:17%;
+    flex-wrap: wrap;
+}
+
+/*
+
+#caja24{
+    display: flex;
+    border: 1px solid;
+    height: 100px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#caja24 > div{
+    height: 20px;
+    margin: 5px;
+    text-align: center;
+    background-color: aquamarine;
+}*/

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light " style="width: 100%;">
+        <h5>LAVANDERIA CMRQ</h5>
+        
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <span class="navbar-toggler-icon"></span>
+          
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+            <ul class="navbar-nav ml-auto">
+           
+            
+            <li class="nav-item logged-out">
+                <a class="nav-link" href="#" id="inicioP" >Inicio</a>
+              </li>       
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#" id="mostrarPerfil" >Perfil</a>
+            </li>       
+            
+            <li class="nav-item logged-in" >
+                <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+              </li>    
+          </ul>
+        </div>
+      </nav>
+      <nav style="text-align: center;background-color: white; opacity:0.9;
+      filter:alpha(opacity=60);" >
+        <!--<h7 id="titular" ></h7>-->
+      </nav>
+
+      <div id="ppadre1">
+          <br>
+          
+          <div id="caja12">
+          
+            <div id="caja14">
+                  
+<br>
+
+                
+                <div id="caja16">
+                    <p class="table-dark">&nbsp;</p>
+                
+                    <br>
+                    <input type="radio" id="lavanderia1" name="servicios1"  value="lavanderia1">
+        <label for="lavanderia1"><p>LAVANDERIA / PLANCHADO</p>
+            
+            <img src="imagenes/single-cartoon-folded-red-t-shirt-vector-29563120.jpg"  style="width: 30%;">
+        </label>
+        
+                </div>
+                <div id="caja17">
+                    
+                    <p class="table-dark">SERVICIOS</p>
+                    <br>
+                    <input type="radio" id="hogar" name="servicios1" value="hogar" ;>
+                    <label for="hogar"><p >LIMPIEZA HOGAR </p>
+                        
+                        <img src="imagenes/sabana-cama-cama-D_NQ_NP_818340-MLM31957931961_082019-F.jpg"  style="width: 70%;">
+                    </label>
+                    
+                </div>
+                <div id="caja18">
+                    <p class="table-dark">&nbsp;</p>
+                    <br>
+                    <input type="radio" id="lseco" name="servicios1"value="lseco">
+                    <label for="lseco"><p>LAVADO EN SECO </p>
+                        
+                        <img src="imagenes/clothing_shirt_icon_140713 (2).png" width="50%">
+                    </label>    
+                    
+                </div>
+        
+        
+        
+        <br>        
+              </div>
+              
+          </div>
+          
+          <br>
+          <div id="caja13">
+              <p class="table-dark">MI CESTA</p>
+              <hr>
+              <p id= "vacio">No ha seleccionado ningun producto</p>
+              <hr>
+              <button type="button" class="btn btn-outline-dark">Guardar</button>
+              <br>
+              <br>
+          </div>
+      </div>
+<br>
+      <div id = "caja15" style="padding-bottom: 7%; padding-top: 6%; display: block" >
+        SELECCIONE UN SERVICIO
+      </div>
+      <div id="caja19" style="display: none;">
+        <div id="caja24">
+            <br>
+        <div id="caja22">
+          <table class="table table-hover" >
+                
+            <thead class="table-dark">
+                <tr><th colspan="4">Lista de Precios</th></tr>
+              
+              
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Vestido</td>
+                <td style="width: 25%;"> $  10.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Traje Formal</td>
+                <td> $  15.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Prenda</td>
+                <td> $  8.00 </td>
+              </tr>
+
+          </table>
+        </div>
+        <div id="caja23">
+          <p class="table-dark"> Servicios</p>
+          <div class="table-responsive-sm">
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="imagenes/rBVaWFzgzHuAFgKGAAEfgBql_So336.jpg" alt=""></td>
+                    <td>Vestido</td>
+                    <td >   <input type="number" id="cantidadVestido" class="form-control" placeholder="Cantidad"  ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td> <img src="imagenes/40250-tian-qiong-hombres-trajes-blazer-con-pantalones-slim-fit-trajes-para-hombres-marca-de-lujo-para-hombre-negro-trajes-formal-de-la-novia-tamano-del-desgaste-3xl.jpg" alt=""></td>
+                    <td>Traje Completo</td>
+                    <td>   <input type="number" id="cantidadTrajeCompleto" class="form-control" placeholder="Cantidad"  ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td><img src="imagenes/bazar-recre0-8.jpg" alt=""></td>
+                    <td>Prenda</td>
+                    <td> <input type="number" id="cantidadPPrenda" class="form-control" placeholder="Cantidad" ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td ><button type="button" class="btn btn-dark" id="agregarES" >AGREGAR</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <div id="caja20" style="display: none;">
+        
+        
+        <p class="table-dark">LIMPIEZA HOGAR</p>
+
+        <div id="caja25">
+            <br>
+        <div id="caja26">
+          <table class="table table-hover" >
+                
+            <thead class="table-dark">
+                <tr><th colspan="4">Lista de Precios</th></tr>
+                <tr><th colspan="4">Lavado y Secado</th></tr>
+              
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Sabana</td>
+                <td style="width: 25%;"> $  2.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Cobertor</td>
+                <td> $  3.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Toalla</td>
+                <td> $  2.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Cortina </td>
+                <td> $  2.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Mantel </td>
+                <td> $  2.50 </td>
+              </tr>
+
+          </table>
+        </div>
+        <div id="caja27">
+          <p class="table-dark"> Servicios</p>
+          <div class="table-responsive-sm">
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="imagenes/sabana-cama-cama-D_NQ_NP_818340-MLM31957931961_082019-F.jpg" alt=""></td>
+                    <td>Sabana</td>
+                    <td >   <input type="number" id="cantidadSabana" class="form-control" placeholder="Cantidad"  ></td>
+                    <td><img src="imagenes/3085001000478_1.png" alt=""></td>
+                    <td>Cortina</td>
+                    <td >   <input type="number" id="cantidadCortina" class="form-control" placeholder="Cantidad"  ></td>
+                  </tr>
+                  <tr>
+                    <td> <img src="imagenes/sd.png" alt=""></td>
+                    <td>Cobertor</td>
+                    <td>   <input type="number" id="cantidadCobertor" class="form-control" placeholder="Cantidad"  ></td>
+                    <td><img src="imagenes/816VnbIB9NL._SR500,500_.jpg" alt=""></td>
+                    <td>Mantel</td>
+                    <td >   <input type="number" id="cantidadMantel" class="form-control" placeholder="Cantidad"  ></td>
+                  </tr>
+                  <tr>
+                    <td><img src="imagenes/toalla-de-bano-100x150-algodon-400-gr-m2-sols-personalizada.jpg" alt=""></td>
+                    <td>Toalla</td>
+                    <td> <input type="number" id="cantidadToalla" class="form-control" placeholder="Cantidad" ></td>
+                    <td></td>
+                    <td></td>
+                    <td ><button type="button" class="btn btn-dark" id="agregarLH" >AGREGAR</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+    <div id="caja21" style="display: none;">
+        <p class="table-dark">LAVANDERIA Y PLANCHADO</p>
+        <div id="caja28">
+          
+        <div id="caja29" >
+          
+            <table class="table table-hover" >
+                
+                <thead class="table-dark">
+                    <tr><th colspan="4">Lista de Precios</th></tr>
+                    <tr><th colspan="4">Lavado y Secado</th></tr>
+                  
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Prenda <br>(Camisa, Pantalon,Camiseta)</td>
+                    <td style="width: 25%;"> $  0.30 </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Docena</td>
+                    <td> $  3.00 </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Ropa Interior <br> (Docena)</td>
+                    <td> $  1.50 </td>
+                  </tr>
+
+
+                  <thead class="table-dark">
+                    <tr><th colspan="4">Planchado</th></tr>
+                  
+                </thead>
+                <tbody>
+                    <tr>
+                      <td scope="row">Prenda <br>(Camisa, Pantalon,Camiseta, etc)</td>
+                      <td> $  0.50 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Docena</td>
+                      <td> $  5.00 </td>
+                    </tr>
+                </tbody>
+                </tbody>
+              </table>
+        </div>
+        <div id="caja30">
+            <p class="table-dark"> Servicios</p>
+            <div class="table-responsive-sm">
+                <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="width: 18%;"  ></th>
+                        <th scope="col" >Descripcion</th>
+                        <th style="width: 20%;" scope="col">Cantidad</th>
+                        <th scope="col">Planchado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img src="imagenes/single-cartoon-folded-red-t-shirt-vector-29563120.jpg" alt=""></td>
+                        <td>Por prenda</td>
+                        <td >   <input type="number" id="cantidadPrendas" class="form-control" placeholder="Cantidad"  ></td>
+                        <td> <label for=""class="form-control"> <select name="form1" id="comboboxPlp" style=" border: 0px; " >
+                            <option>SI</option>
+                            <option>NO</option></label></td>
+                        
+                      </tr>
+                      <tr>
+                        <td> <img src="imagenes/ropa-apilada-doblada-dibujos-animados_18591-50936.jpg" alt=""></td>
+                        <td>Por Docena</td>
+                        <td>   <input type="number" id="cantidadDocenas" class="form-control" placeholder="Cantidad"  ></td>
+                        <td> <label for=""class="form-control"> <select name="form1" id="comboboxDlp" style=" border: 0px; " >
+                            <option>SI</option>
+                            <option>NO</option></label></td>
+                      </tr>
+                      <tr>
+                        <td><img src="imagenes/pngtree-pink-stripe-sock-stocking-png-image_442934.jpg" alt=""></td>
+                        <td>Ropa Interior</td>
+                        <td> <input type="number" id="cantidadRopaInterior" class="form-control" placeholder="Cantidad" ></td>
+                        <td><label for="" class="form-control">---</label></td>
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td ><button type="button" class="btn btn-dark" id="agregarLP" >AGREGAR</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+      
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+<script src="sesionIniciada.js"></script>
+
+
+<p></p>
+
+</body>
+<br>
+
+
+
+</div>
+<br>
+<footer style="background-color:aliceblue;padding-bottom:11px ; padding-top: 12px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>

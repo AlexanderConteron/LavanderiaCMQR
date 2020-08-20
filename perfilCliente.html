@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h5>LAVANDERIA CMRQ</h5>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+           
+            
+                <li class="nav-item logged-out">
+                    <a class="nav-link" href="#" id="inicioP" >Inicio</a>
+                  </li>       
+                <li class="nav-item logged-out">
+                  <a class="nav-link" href="#" id="mostrarPerfil" >Perfil</a>
+                </li>       
+                
+                <li class="nav-item logged-in" >
+                    <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+                  </li>    
+              </ul>
+        </div>
+      </nav>
+
+
+<!--VENTANA MODAL ENTREGADO-->
+<div class="modal fade" id="detalleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 2%;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        
+      <div class="table-responsive-sm">
+      <table class="table table-hover" id="tablaFechas" >
+                  
+          <thead class="table-dark">
+              <tr>
+                <td>Detalle</td>
+                <td>Fecha Recibido</td>
+                <td>Fecha Entrega</td>
+                <td>Total</td>
+                <td></td>
+              </tr>
+          </thead>
+          <tbody id="detalleEntegado">
+            
+        </table>
+        <label for="" id="entregarl" style="margin-bottom: 5%; margin-top: 5%;">NO TIENE SERVICIOS ENTREGADOS</label>
+        
+        
+            </div>
+
+      
+      </div>
+
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--VENTANA MODAL ENTREGADO-->
+<div class="modal fade" id="detalleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 2%;">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        
+      <div class="table-responsive-sm">
+      <table class="table table-hover" id="tablad" >
+                  
+          <thead class="table-dark">
+              <tr>
+                <td colspan="4">Detalle</td>
+                
+              </tr>
+              <tr>
+                <td></td>
+                <td>Lavanderia</td>
+                <td>Hogar</td>
+                <td>Lavado en Seco</td>
+              </tr>
+          </thead>
+          <tr>
+            <td id="n1">Nombre</td>
+            <td id="n2">Por Prenda</td>
+            <td id="n3">Cobertor / Mantel</td>
+            <td id="n4">Vestido</td>
+          </tr>
+          <tr>
+            <td>Cantidad</td>
+            <td id="lr1"></td>
+            <td id="ls1"></td>
+            <td id="lh1"></td>
+          </tr>
+          <tr>
+            <td id="n5">Nombre</td>
+            <td id="n6">Por Docena</td>
+            <td id="n7">Cortina / Toalla</td>
+            <td id="n8">Traje Completo</td>
+          </tr>
+          <tr>
+            <td>Cantidad</td>
+            <td id="lr2"></td>
+            <td id="ls2"></td>
+            <td id="lh2"></td>
+          </tr>
+          <tr>
+            <td id="n9">Nombre</td>
+            <td id="n10">Ropa Interior</td>
+            <td id="n11">Sabana</td>
+            <td id="n12">Por Prenda</td>
+          </tr>
+          <tr>
+            <td>Cantidad</td>
+            <td id="lr3"></td>
+            <td id="ls3"></td>
+            <td id="lh3"></td>
+          </tr>
+          
+          
+          <tr>
+            <td>Total</td>
+            <td id="lr4"></td>
+            <td id="ls4"></td>
+            <td id="lh4"></td>
+          </tr>
+          <tbody id="detalleDetalle1">
+          
+            
+        </table>
+        
+            </div>
+
+      
+      </div>
+
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+      <div id="saludos1" style="display: block"></div>
+
+      
+
+
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+
+
+<br>
+<div id="bloque1">
+    <div id="bloque2">
+        <br>
+        
+        <img id="imagen1" width="10%">
+        <br>
+        <br>
+
+<div class="table-responsive-sm">
+    <table class="table table-hover" >
+                
+        <thead class="table-dark">
+            <tr><th colspan="2">Datos del Usuario</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">Nombre</td>
+            <td>  <input type="text" id="nombreCliente" class="form-control" placeholder="Nombre"  disabled></td>
+          </tr>
+          <tr>
+            <td scope="row">Apellido</td>
+            <td>  <input type="text" id="apellidoCliente" class="form-control" placeholder="Apellido"  disabled></td>
+          </tr>
+          <tr>
+            <td scope="row">Email</td>
+            <td>  <input type="text" id="emailCliente" class="form-control" placeholder="Email"  disabled></td>
+          </tr>
+          <tr>
+                <td scope="row">Direccion</td>
+                <td>  <div id="myMap1" style="height: 150px; width: 100%;"></div></td>
+              </tr>
+              <tr>
+            <td scope="row"></td>
+            <!--<td><button type="button" class="btn btn-dark" id="editarMapita" style="margin-left: 45%;" >EDITAR DIRECCION</button></td>-->
+          </tr>
+
+      </table>
+          </div>
+
+
+    </div>
+    <div id="bloque3">
+
+<div id="bloque5">
+      <p class="table-dark">Servicios por recoger</p>
+      <div class="table-responsive-sm">
+        <table class="table table-hover" id="tablaFechas" >
+                    
+            <thead class="table-dark">
+                <tr>
+                  <td>Nombre</td>
+                  <td>Fecha Recibido</td>
+                  <td>Fecha Entrega</td>
+                  <td>Total</td>
+                  <td>Detalle</td>
+                </tr>
+            </thead>
+            <tbody id="detalleRecoger">
+              
+          </table>
+          
+          <label for="" id="recogerl" style="margin-bottom: 5%; margin-top: 5%;">NO TIENE SERVICIOS POR RECOGER</label>
+          
+              </div>
+
+</div>
+
+<div id="bloque6">
+  <p class="table-dark">Servicios por entregar</p>
+  <div class="table-responsive-sm">
+    <table class="table table-hover" id="tablaFechas" >
+                
+        <thead class="table-dark">
+            <tr>
+              <td>Detalle</td>
+              <td>Fecha Recibido</td>
+              <td>Fecha Entrega</td>
+              <td>Total</td>
+              <td></td>
+            </tr>
+        </thead>
+        <tbody id="detalleRecoger2">
+          
+      </table>
+          </div>
+          <label for="" id="entragarl" style="margin-bottom: 5%; margin-top: 5%;">NO TIENE SERVICIOS POR SER ENTREGADOS</label>
+</div>
+<button type="button" class="btn btn-dark" id="pedidosEntregados" data-toggle="modal" data-target="#detalleModal6" >Pedidos Entregados</button>
+    
+<br>
+<br></div>
+</div>
+<br>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+<script src="map1.js"></script>
+<!--<script src="map.js"></script>-->
+<script src="cliente.js"></script>
+
+</body>
+
+<footer style="background-color:aliceblue;padding-bottom:6px ; padding-top: 6px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>

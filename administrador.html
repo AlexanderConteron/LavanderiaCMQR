@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h5>LAVANDERIA CMRQ</h5>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+           
+            
+                <li class="nav-item logged-out">
+                    <a class="nav-link" href="#" id="adminPerfil" >Perfil</a>
+                  </li>       
+                <li class="nav-item logged-out">
+                    <a class="nav-link" href="#" id="adminUsuarios1" >Usuarios</a>
+                  </li>       
+                  <li class="nav-item logged-out">
+                    <a class="nav-link" href="#" id="serviciosUsuarios" >Servicios</a>
+                  </li>       
+                
+                <li class="nav-item logged-in" >
+                    <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+                  </li>    
+              </ul>
+        </div>
+      </nav>
+
+
+
+
+<!--VENTANA MODAL ENTREGADO-->
+<div class="modal fade" id="detalleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 2%;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Direccion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="reiniciar2">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center; height: 200px;">
+        
+        <div id="myMap1" style="height: 100%; width: 100%;"></div>
+    
+    
+      </div>
+
+
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" id="reiniciar1">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div id="abloque1">
+        <div id="abloque2">
+            <br>
+            <p class="table-dark">Empleados</p>
+            <div class="table-responsive-sm">
+    <table class="table table-hover" id="tablaFechas" >
+                
+        <thead class="table-dark" style="margin-left: 5%;">
+            <tr>
+            <td>Foto</td>
+              <td>Usuario</td>
+              <td>Cargo</td>
+              <td>Correo Electronico</td>
+              <td>Direccion</td>
+              <td></td>
+            </tr>
+        </thead>
+        <tbody id="adminUsuariosC">
+          
+      </table>
+          </div>
+  <br>
+  
+        </div>
+        <div id="abloque3">
+            <br>
+            <p class="table-dark">Clientes</p>
+            <div class="table-responsive-sm">
+    <table class="table table-hover" id="tablaFechaq" >
+                
+        <thead class="table-dark" style="margin-left: 5%;">
+            <tr>
+            <td>Foto</td>
+              <td>Usuario</td>
+              <td>Cargo</td>
+              <td>Correo Electronico</td>
+              <td>Direccion</td>
+              <td></td>
+            </tr>
+        </thead>
+        <tbody id="adminUsuarios">
+          
+      </table>
+          </div>
+  <br>
+  
+        </div>
+        </div>
+      </div>
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+      <script src="firebase.js"></script>
+      <script src="map1.js"></script>
+      <script src="administrador.js"></script>
+
+</body>
+
+<footer style="background-color:aliceblue;padding-bottom:6px ; padding-top: 6px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ EMPLEADO</medium>
+
+</footer>
+
+
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h4>LAVANDERIA CMRQ</h4>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item logged-out" style="display: none"> 
+              <a class="nav-link" href="# " data-toggle="modal" data-target="#iniciarSesionmodal">Iniciar Sesion</a>
+            </li>
+            <li class="nav-item logged-out" style="display: none">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#registrarmodal">Registrarse</a>
+            </li>
+            <li class="nav-item logged-in" 
+            
+            
+            
+            >
+                <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+              </li>
+              
+           
+          </ul>
+        </div>
+      </nav>
+
+      <div id="saludos1" style="display: block">
+
+      </div>
+      <div id="foto2" >
+
+      </div>
+
+      
+
+
+      <!--VENTANA MODAL 1-->
+      <div class="modal fade" id="registrarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormregistroUsuario">
+                  <div id="FormGroup">
+                    <input type="text" id="email" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave1" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <div id="FormGroup" style="width: 170px;">
+                  <label for=""class="form-control">Cargo  <select name="form1" id="combobox1" style=" border: 0px; " >
+                    <option>Empleado</option>
+                    <option>Cliente</option></label>
+                  </select>
+                  </div>
+                  <br>
+                  
+
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <div class="modal-footer">
+             
+                </div> 
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <!--VENTANA MODAL 2-->
+      <div class="modal fade" id="iniciarSesionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormIniciarSesionUsuario">
+                <div id="FormGroup">
+                    <input type="text" id="email1" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave11" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <button style="margin-left: 38%;" type="submit" class="btn btn-primary ">Iniciar Sesion</button>
+                  <br>
+                  <br>
+                  <div style="margin-left: 36%;">
+                      <button id="botonFacebook" type="button" style=" margin-left: 0%;width: 60px;height:60px; background-image: url(iconfinder_facebook_386622.png);
+                  background-size: cover;border: 0px ;
+                    "></button> &nbsp;
+                    <button id="botonGoogle" type="button" style="width: 60px;height:60px; background-image: url(iconfinder_6_-_Google_Plus_1775164.png);
+                  background-size: cover;border: 0px ;
+                    "></button>
+                    </div>
+                    
+                  
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script >
+  
+</script>
+<script src="firebase.js"></script>
+<script src="login.js"></script>
+<h1 id="titular"></h1>
+<p></p>
+<p></p>
+
+</body>
+<br>
+<aside id="padre1" >
+  <div id="caja5">
+    <div id="padre4">
+      <br>
+      
+      <h4>COMO FUNCIONA?</h4>
+  </div>
+    <div id="padre2">
+      <div id="caja9">
+        <img src="imagenes/iconfinder_Computer_display_monitor_television_tv_screen_1886824.png" style="width: 60%;">
+        <br>
+        <p>1</p>
+        <medium>Registrate y ponte en contacto</medium>
+      </div>
+    <div id="caja10">
+      <img src="imagenes/iconfinder_Delivery_383995.png" style="width: 60%;">
+      <p>2</p>
+      <medium>Selecciona tu direccion y pasamos por tu ropa</medium>
+    </div>
+    <div id="caja11">
+      <img src="imagenes/iconfinder_neck-tie_532629 (1).png" style="width: 60%;">
+      <p>3</p>
+      <medium>Te devolvemos la ropa limpia</medium>
+    </div>
+  </div>
+  <div id="padre3" >
+    <small>Contactanos desde la comodidad de tu hogar para que tengas tu ropa limpia con calidad</small>
+  </div>
+    
+  </div>
+  
+  <div id="caja7">
+    <br>
+    
+  <h4>SERVICIOS</h4>
+  <br>
+  
+    <li >Servicio a domicilio</li>
+    <br>
+  <img src="imagenes/iconfinder_Construction_home_protection_6588981.png" style="width: 25%;" >    
+    <li >Lavanderia y Tintoreria</li>
+    <br>
+<img src="imagenes/iconfinder_wedding_hand_drawn_icon_-14_3250824.png"  style="width: 25%;">
+    <br>
+    <li >Limpieza del hogar</li>
+    <br>
+    <img src="imagenes/iconfinder_Laundry-08_4093623.png"  style="width: 25%;">
+  
+  </div>
+  <div id="caja8">
+    <br>
+    <h4>NOSOTROS</h4>
+    <br>
+    
+    <p style="text-align: justify;  padding-right: 10%; padding-left: 10%;"> Somos una empresa especializada en ofrecer calidad en el servicio de lavado de sus prendas, 
+       con suministros de última tecnología y respetando las normas ambientales. <br> <br>
+       Un concepto de lavandería diferente donde tú eres lo más importante.
+      </p>
+       
+       
+       <img src="imagenes/agua-logo.png" style="width: 50%;">
+  </div>
+  
+</aside>
+
+
+</div>
+<br>
+<footer style="background-color:aliceblue;padding-bottom:6px ; padding-top: 6px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>
+
+
+const registroout = document.querySelectorAll('.logged-out');
+const registroin = document.querySelectorAll('.logged-in');
+const imagenPerfil = document.querySelectorAll('#imagenPerfil');
+const verificarLogin= user =>{
+    if(user){
+        
+registroin.forEach(link=> link.style.display='block');
+registroout.forEach(link=> link.style.display='none');
+    }else{
+        
+        registroin.forEach(link=> link.style.display='none');
+        registroout.forEach(link=> link.style.display='block');
+    }
+}
+
+
+/*function mostrar(){
+   
+    
+    alert("El nombre es : "+ nom);
+}*/
+
+const formularioRegistro1 = document.querySelector('#FormregistroUsuario');
+formularioRegistro1.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const email = document.querySelector('#email').value;
+    const clave1 = document.querySelector('#clave1').value;
+    /*var nom = document.getElementById("combobox1").value; 
+    console.log(nom)*/
+    autenticacion.createUserWithEmailAndPassword(email, clave1).then(userCredential=>{
+        guardarDatos1(userCredential.user)
+        //verificarCorreo();
+        formularioRegistro1.reset();
+        $('#registrarmodal').modal('hide');
+
+    }).catch(function(error) {
+        // Handle Errors here.
+        formularioRegistro1.reset();
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('Clave debil, Ingrese una nueva');
+        } else {
+          alert('El correo ya esta registrado Ingrese uno nuevo');
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+
+})
+
+const saludo = document.querySelector('#saludos1');
+
+const formularioInicioSesion1 = document.querySelector('#FormIniciarSesionUsuario');
+formularioInicioSesion1.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const email = document.querySelector('#email1').value;
+    const clave1 = document.querySelector('#clave11').value;
+    autenticacion.signInWithEmailAndPassword(email, clave1).then(userCredential=>{
+        console.log("SESION INICIADA")
+        
+        console.log(userCredential.user)
+        formularioInicioSesion1 .reset();
+        $('#iniciarSesionmodal').modal('hide');
+        
+        console.log("Correcto")
+        
+        
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode === 'auth/wrong-password') {
+          alert('Credenciales incorrectas');
+        } else {
+          alert('El usuario aun no ha sido registrado');
+        }
+        console.log(error);
+        document.getElementById('quickstart-sign-in').disabled = false;
+        // [END_EXCLUDE]
+      });
+    
+    
+
+})
+
+const cerrarSesion1 = document.querySelector('#cerrarSesion');
+cerrarSesion1.addEventListener('click', e=>{
+    autenticacion.signOut().then(()=>
+    {
+        console.log("SESION CERRADA")
+    })
+})
+
+const iniciarFacebook =document.querySelector('#botonFacebook');
+
+iniciarFacebook.addEventListener('click',e=>{
+
+    const provider =new firebase.auth.FacebookAuthProvider();
+    
+    autenticacion.signInWithPopup(provider)
+    .then(result =>{
+    var vari1=result.credential.accessToken;
+    var usuario11= result.user;    
+    console.log("SESION INICIADA")
+    guardarDatos(usuario11);    
+        formularioInicioSesion1 .reset();
+        $('#iniciarSesionmodal').modal('hide');  
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+const iniciarGoogle =document.querySelector('#botonGoogle');
+const provider1 =new firebase.auth.GoogleAuthProvider();
+iniciarGoogle.addEventListener('click',e=>{
+    autenticacion.signInWithPopup(provider1)
+    .then(result =>{
+        console.log("SESION INICIADA")
+        
+        var vari2=result.credential.accessToken;
+    var usuario12= result.user;  
+
+        formularioInicioSesion1 .reset();
+        $('#iniciarSesionmodal').modal('hide');
+        guardarDatos(usuario12);    
+        
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
+
+
+
+autenticacion.onAuthStateChanged(user=>{
+    if(user){
+        console.log(user.emailVerified)
+        verificarLogin(user);
+        
+        const general = autenticacion.currentUser.photoURL;
+        console.log(autenticacion.currentUser);
+        if(autenticacion.currentUser.displayName == null){
+            mostrarImagen1(autenticacion.currentUser.displayName,"https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png");
+        }else{
+            mostrarImagen1(autenticacion.currentUser.displayName,general);
+        }
+        
+        mostrarPtuebita1(user);
+        
+    }else{
+        
+        verificarLogin(user);
+        NomostrarImagen1();
+    }
+})
+
+
+
+
+function guardarDatos(user){
+    var usuario={
+        uid:user.uid,
+        nombre: user.displayName,
+        email: user.email,
+        foto: user.photoURL,
+        cargo: 'Cliente'
+    }
+    fireStoreBD1.ref('usuarios/'+user.uid).set(usuario)       
+}
+function guardarDatos1(user){
+    const nombre = document.querySelector('#nombre').value;
+    const apellido = document.querySelector('#apellido').value;
+    var cargo1 = document.getElementById("combobox1").value; 
+    var usuario={
+        uid:user.uid,
+        nombre: nombre+ " "+apellido ,
+        email: user.email,
+        foto: "https://www.iconfinder.com/icons/216548/user_icon",
+        cargo:cargo1
+    }
+fireStoreBD1.ref('usuarios/'+user.uid).set(usuario)   
+}
+
+
+
+/*var referencia1 = fireStoreBD1.ref('usuarios');
+referencia1.orderByChild("uid").equalTo('zpeX4AK83tenE4mr0rVTd6T2H982').once('value',function(snapshot){
+    console.log(snapshot.val());
+})*/
+function mostrarPtuebita1(user){
+    var referencia1 = fireStoreBD1.ref('usuarios/'+user.uid);
+    referencia1.on('value',function(snapshot){
+        var data=snapshot.val();
+        document.getElementById("titular").textContent =  data.nombre;
+        console.log(referencia1);
+        console.log(user.uid);
+        console.log(data.nombre);
+        console.log(referencia1);
+        
+        
+    })
+}
+
+
+
+function verificarCorreo(){
+    var usuariov = autenticacion.currentUser;
+    usuariov.sendEmailVerification().then(function(){
+        console.log('VERIFICANDO');
+    }).catch(function(error){
+        console.log('ERRORRRRRRRRRR');
+    })
+
+
+}
+
+/*function mostrarImagen(url){
+    fireStoreBD1.ref("usuarios").on("child_added",function(s){
+    
+        var img = document.createElement('img');
+        img.src=url;
+        img.width=50;
+    document.getElementById('imagenPerfil').appendChild(img);
+    })
+    
+}*/
+function mostrarImagen1(var1,var2){
+    saludo.innerHTML = `<h4 class="alert-heading">Bienvenido ${var1}</h4>
+    <img src="${var2}" style="width:50px">`;
+}
+function NomostrarImagen1(){
+    saludo.innerHTML = `<h4 class="alert-heading"></h4>`;
+}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h4>LAVANDERIA CMRQ</h4>
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item logged-out"> 
+              <a class="nav-link" href="# " data-toggle="modal" data-target="#iniciarSesionmodal">Iniciar Sesion</a>
+            </li>
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#registrarmodal">Registrarse</a>
+            </li>           
+          </ul>
+        </div>
+      </nav>
+
+
+      
+
+
+      <!--VENTANA MODAL 1-->
+      <div class="modal fade" id="registrarmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormregistroUsuario" >
+                  <div id="FormGroup">
+                    <input type="text" id="email" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="text" id="apellido" class="form-control" placeholder="Apellido" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave1" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <div id="FormGroup" style="width: 170px;">
+                  <label for=""class="form-control">Cargo  <select name="form1" id="combobox1" style=" border: 0px; " >
+                    <option>Empleado</option>
+                    <option>Cliente</option></label>
+                  </select>
+                  </div>
+                  <br>
+                  
+
+                  <button type="submit" class="btn btn-primary"  >Guardar</button>
+                  <div class="modal-footer">
+             
+                </div> 
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <!--VENTANA MODAL 2-->
+      <div class="modal fade" id="iniciarSesionmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="FormIniciarSesionUsuario">
+                <div id="FormGroup">
+                    <input type="text" id="email1" class="form-control" placeholder="Correo Electronico" required="">
+                    
+                  </div>
+                  <br>
+                  <div id="FormGroup">
+                    <input type="password" id="clave11" class="form-control" placeholder="Clave" required="">
+                  </div>
+                  <br>
+                  <button style="margin-left: 38%;" type="submit" class="btn btn-primary ">Iniciar Sesion</button>
+                  <br>
+                  <br>
+                  <div style="margin-left: 36%;">
+                      <button id="botonFacebook" type="button" style=" margin-left: 0%;width: 60px;height:60px; background-image: url(iconfinder_facebook_386622.png);
+                  background-size: cover;border: 0px ;
+                    "></button> &nbsp;
+                    <button id="botonGoogle" type="button" style="width: 60px;height:60px; background-image: url(iconfinder_6_-_Google_Plus_1775164.png);
+                  background-size: cover;border: 0px ;
+                    "></button>
+                    </div>
+                    
+                  
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+<script src="login2.js"></script>
+
+
+<p></p>
+
+</body>
+<br>
+<aside id="padre1" >
+  <div id="caja5">
+    <div id="padre4">
+      <br>
+      
+      <h4>COMO FUNCIONA?</h4>
+  </div>
+    <div id="padre2">
+      <div id="caja9">
+        <img src="imagenes/iconfinder_Computer_display_monitor_television_tv_screen_1886824.png" style="width: 60%;">
+        <br>
+        <p>1</p>
+        <medium>Registrate y ponte en contacto</medium>
+      </div>
+    <div id="caja10">
+      <img src="imagenes/iconfinder_Delivery_383995.png" style="width: 60%;">
+      <p>2</p>
+      <medium>Selecciona tu direccion y pasamos por tu ropa</medium>
+    </div>
+    <div id="caja11">
+      <img src="imagenes/iconfinder_neck-tie_532629 (1).png" style="width: 60%;">
+      <p>3</p>
+      <medium>Te devolvemos la ropa limpia</medium>
+    </div>
+  </div>
+  <div id="padre3" >
+    <small>Contactanos desde la comodidad de tu hogar para que tengas tu ropa limpia con calidad</small>
+  </div>
+    
+  </div>
+  
+  <div id="caja7">
+    <br>
+    
+  <h4>SERVICIOS</h4>
+  <br>
+  
+    <li >Servicio a domicilio</li>
+    <br>
+  <img src="imagenes/iconfinder_Construction_home_protection_6588981.png" style="width: 25%;" >    
+    <li >Lavanderia y Tintoreria</li>
+    <br>
+<img src="imagenes/iconfinder_wedding_hand_drawn_icon_-14_3250824.png"  style="width: 25%;">
+    <br>
+    <li >Limpieza del hogar</li>
+    <br>
+    <img src="imagenes/iconfinder_Laundry-08_4093623.png"  style="width: 25%;">
+  
+  </div>
+  <div id="caja8">
+    <br>
+    <h4>NOSOTROS</h4>
+    <br>
+    
+    <p style="text-align: justify;  padding-right: 10%; padding-left: 10%;"> Somos una empresa especializada en ofrecer calidad en el servicio de lavado de sus prendas, 
+       con suministros de última tecnología y respetando las normas ambientales. <br> <br>
+       Un concepto de lavandería diferente donde tú eres lo más importante.
+      </p>
+       
+       
+       <img src="imagenes/agua-logo.png" style="width: 50%;">
+  </div>
+  
+</aside>
+
+
+</div>
+<br>
+<footer style="background-color:aliceblue;padding-bottom:6px ; padding-top: 6px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>

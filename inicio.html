@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanderia CMRQ</title>
+    
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<style type="text/css">
+
+    body {
+        background-image: url(a12.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<link rel="stylesheet" href="estilo1.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid.min.js"></script>
+
+<link  rel="icon"   href="imagenes/iconfinder_washing_machine_2023116.png" type="image/png" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light " style="width: 100%;">
+        <h5>LAVANDERIA CMRQ</h5>
+        
+        
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <span class="navbar-toggler-icon"></span>
+          
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+            <ul class="navbar-nav ml-auto">
+           
+            
+            <li class="nav-item logged-out">
+                <a class="nav-link" href="#" id="inicioP" >Inicio</a>
+              </li>       
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#" id="mostrarPerfil" >Perfil</a>
+            </li>       
+            
+            <li class="nav-item logged-in" >
+                <a class="nav-link" href="#" id="cerrarSesion">Cerrar Sesion</a>
+              </li> 
+              
+          </ul>
+        </div>
+      </nav>
+      <nav style="text-align: center;background-color: white; opacity:0.9;
+      filter:alpha(opacity=60);" >
+        <!--<h7 id="titular" ></h7>-->
+      </nav>
+      
+
+<!--ventana modal1-->
+<div class="modal fade" id="exito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 7%;">
+  <div class="modal-dialog" style="padding-left: 5%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Estado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <label for="" id="labelExito" >Correcto</label>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!--ventana modal2-->
+<div class="modal fade" id="detalleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 2%;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        
+        <div class="table-responsive-sm">
+          <table class="table table-hover" >
+                      
+              <thead class="table-dark">
+                  <tr>
+                    <th colspan="5"><label for="" id="datoslavan1">Datos</label></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Descripcion</td>
+                  <td scope="row">Cantidad</td>
+                  <td scope="row">Precio</td>
+                  <td scope="row">Planchado</td>
+                  <td scope="row">Subtotal</td>
+                  
+                </tr>
+                <tr id="trPorUnidad">
+                  <td>  <label for="" id="nombreL1"></label></td>
+                  <td>  <label for="" id="cantidadL1"></label></td>
+                  <td>  <label for="" id="precioL1"></label></td>
+                  <td>  <label for="" id="planchadoL1"></label></td>
+                  <td>  <label for="" id="subtotalL1"></label></td>
+                </tr>
+                <tr id="trPorDocena">
+                  <td>  <label for="" id="nombreL2"></label></td>
+                  <td>  <label for="" id="cantidadL2"></label></td>
+                  <td>  <label for="" id="precioL2"></label></td>
+                  <td>  <label for="" id="planchadoL2"></label></td>
+                  <td>  <label for="" id="subtotalL2"></label></td>
+                </tr>
+                <tr id="trRopaInterior">
+                  <td>  <label for="" id="nombreL3"></label></td>
+                  <td>  <label for="" id="cantidadL3"></label></td>
+                  <td>  <label for="" id="precioL3"></label></td>
+                  <td>  <label for="" id="planchadoL3"></label></td>
+                  <td>  <label for="" id="subtotalL3"></label></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Total : </td>
+                  <td><label for="" id="TotalL1">Total</label></td>
+                </tr>
+            </table>
+                </div>
+      
+      
+      </div>
+
+
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--ventana modal3-->
+<div class="modal fade" id="detalleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 0%;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        
+        <div class="table-responsive-sm">
+          <table class="table table-hover" >
+                      
+              <thead class="table-dark">
+                  <tr>
+                    <th colspan="4"><label for="" id="datoshogar1">Datos</label></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Descripcion</td>
+                  <td scope="row">Cantidad</td>
+                  <td scope="row">Precio</td>
+                  <td scope="row">Subtotal</td>
+                  
+                </tr>
+                <tr id="trSabana">
+                  <td>  <label for="" id="nombreH1"></label></td>
+                  <td>  <label for="" id="cantidadH1"></label></td>
+                  <td>  <label for="" id="precioH1"></label></td>
+                  <td>  <label for="" id="subtotalH1"></label></td>
+                </tr>
+                <tr id="trPorCobertor">
+                  <td>  <label for="" id="nombreH2"></label></td>
+                  <td>  <label for="" id="cantidadH2"></label></td>
+                  <td>  <label for="" id="precioH2"></label></td>
+                  <td>  <label for="" id="subtotalH2"></label></td>
+                </tr>
+                <tr id="trRopaCortina">
+                  <td>  <label for="" id="nombreH3"></label></td>
+                  <td>  <label for="" id="cantidadH3"></label></td>
+                  <td>  <label for="" id="precioH3"></label></td>
+                  <td>  <label for="" id="subtotalH3"></label></td>
+                </tr>
+                <tr>
+                  <tr id="trMantel">
+                    <td>  <label for="" id="nombreH4"></label></td>
+                    <td>  <label for="" id="cantidadH4"></label></td>
+                    <td>  <label for="" id="precioH4"></label></td>
+                    <td>  <label for="" id="subtotalH4"></label></td>
+                  </tr>
+                  <tr>
+                    <tr id="trToalla">
+                      <td>  <label for="" id="nombreH5"></label></td>
+                      <td>  <label for="" id="cantidadH5"></label></td>
+                      <td>  <label for="" id="precioH5"></label></td>
+                      <td>  <label for="" id="subtotalH5"></label></td>
+                    </tr>
+                    <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Total : </td>
+                  <td><label for="" id="TotalH1">Total</label></td>
+                </tr>
+            </table>
+                </div>
+      
+      
+      </div>
+
+
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--ventana modal4-->
+<div class="modal fade" id="detalleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 0%;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        
+        <div class="table-responsive-sm">
+          <table class="table table-hover" >
+                      
+              <thead class="table-dark">
+                  <tr>
+                    <th colspan="4"><label for="" id="datosSeco1">Datos</label></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Descripcion</td>
+                  <td scope="row">Cantidad</td>
+                  <td scope="row">Precio</td>
+                  <td scope="row">Subtotal</td>
+                  
+                </tr>
+                <tr id="trVestido">
+                  <td>  <label for="" id="nombreS1"></label></td>
+                  <td>  <label for="" id="cantidadS1"></label></td>
+                  <td>  <label for="" id="precioS1"></label></td>
+                  <td>  <label for="" id="subtotalS1"></label></td>
+                </tr>
+                <tr id="trTraje">
+                  <td>  <label for="" id="nombreS2"></label></td>
+                  <td>  <label for="" id="cantidadS2"></label></td>
+                  <td>  <label for="" id="precioS2"></label></td>
+                  <td>  <label for="" id="subtotalS2"></label></td>
+                </tr>
+                <tr id="trPorPrendaSeco">
+                  <td>  <label for="" id="nombreS3"></label></td>
+                  <td>  <label for="" id="cantidadS3"></label></td>
+                  <td>  <label for="" id="precioS3"></label></td>
+                  <td>  <label for="" id="subtotalS3"></label></td>
+                </tr>
+                <tr>
+                  
+                    <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Total : </td>
+                  <td><label for="" id="TotalS1">Total</label></td>
+                </tr>
+            </table>
+                </div>
+      
+      
+      </div>
+
+
+
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      <div id="ppadre1">
+          <br>
+          
+          <div id="caja12">
+          
+            <div id="caja14">
+                  
+
+
+                
+                <div id="caja16" >
+                  
+                    <p class="table-dark">&nbsp;</p>
+                
+                    <br>
+                    <input type="radio" id="lavanderia1" name="servicios1"  value="lavanderia1">
+        <label for="lavanderia1"><p>LAVANDERIA / PLANCHADO</p>
+            
+            <img src="imagenes/single-cartoon-folded-red-t-shirt-vector-29563120.jpg"  style="width: 50%;">
+        </label>
+        
+                </div>
+                <div id="caja17">
+                    
+                    <p class="table-dark">SERVICIOS</p>
+                    <br>
+                    <input type="radio" id="hogar" name="servicios1" value="hogar" ;>
+                    <label for="hogar"><p >LIMPIEZA HOGAR </p>
+                        
+                        <img src="imagenes/sabana-cama-cama-D_NQ_NP_818340-MLM31957931961_082019-F.jpg"  style="width: 100%;">
+                    </label>
+                    
+                </div>
+                <div id="caja18">
+                    <p class="table-dark">&nbsp;</p>
+                    <br>
+                    <input type="radio" id="lseco" name="servicios1"value="lseco">
+                    <label for="lseco"><p>LAVADO EN SECO </p>
+                        
+                        <img src="imagenes/rBVaWFzgzHuAFgKGAAEfgBql_So336.jpg" width="80%">
+                    </label>    
+                    
+                </div>
+        
+        
+        
+        <br>        
+              </div>
+              
+          </div>
+          
+          <br>
+          <div id="caja13">
+              <p class="table-dark">MI CESTA</p>
+              <hr>
+              <label for="" id="subtotalesTexto" style="margin-left: 55%; display: none">Subtotal</label>
+              <p id= "vacio">No ha seleccionado ningun servicio</p>
+              <div id="detalleProductos">
+
+              </div>
+              <hr>
+
+              <div class="table-responsive-sm">
+                <table class="table table-hover" style="display: none;" id="tablaFechas" >
+                            
+                    <thead class="table-dark">
+                        
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row">Total : </td>
+                        <td scope="row"><label for="" id="totaltotalFinal" style="margin-left: 49% ;">TOTAL</label></td>
+                        
+                        
+                      </tr>
+                      <tr id="trVestido">
+                        <td>  Fecha Recepcion :</td>
+                        <td>  <input type="datetime-local" id="fechaRecepcion" class="form-control" placeholder="Ingreso" min="2020-08-08T12:05:00"></td>
+                        
+                      </tr>
+                      <tr id="trTraje">
+                        <td> Fecha Entrega :</td>
+                        <td><input type="datetime-local" id="fechaEntrega" class="form-control" placeholder="Ingreso" ></td>
+                        
+                      </tr>
+                      
+                      
+                  </table>
+                      </div>
+
+              <!--<table style="display: none;" id="tablaFechas">
+                <tr>
+                  <td>
+                    Fecha Recepcion :
+                  </td>
+                  <td style="padding-left: 10%;">
+                    <label for=""> <input type="datetime-local" id="fechaRecepcion" class="form-control" placeholder="Ingreso" ></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 5%;">
+                    Fecha Entrega :
+                  </td>
+                  <td style="padding-left: 10%;">
+                    <label for=""> <input type="datetime-local" id="fechaRecepcion" class="form-control" placeholder="Ingreso" ></label>
+                  </td>
+                </tr>
+              </table>-->
+              
+              <button type="button" class="btn btn-outline-dark" id="guardarLavado" style="display: none;" data-toggle="modal" data-target="#exito">Guardar</button>
+              <br>
+          </div>
+      </div>
+<br>
+      <div id = "caja15" style="padding-bottom: 8%; padding-top: 7%; display: block" >
+        SELECCIONE UN SERVICIO
+      </div>
+      <div id="caja19" style="display: none;">
+        <div id="caja24">
+            <br>
+        <div id="caja22">
+          <table class="table table-hover" >
+                
+            <thead class="table-dark">
+                <tr><th colspan="4">Lista de Precios</th></tr>
+              
+              
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Vestido</td>
+                <td style="width: 25%;"> $  10.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Traje Formal</td>
+                <td> $  15.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Prenda</td>
+                <td> $  8.00 </td>
+              </tr>
+
+          </table>
+        </div>
+        <div id="caja23">
+          <p class="table-dark"> Servicios</p>
+          <div class="table-responsive-sm">
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="imagenes/rBVaWFzgzHuAFgKGAAEfgBql_So336.jpg" alt=""></td>
+                    <td>Vestido</td>
+                    <td >   <input type="number" zid="cantidadVestido" class="form-control" placeholder="Cantidad"  ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td> <img src="imagenes/40250-tian-qiong-hombres-trajes-blazer-con-pantalones-slim-fit-trajes-para-hombres-marca-de-lujo-para-hombre-negro-trajes-formal-de-la-novia-tamano-del-desgaste-3xl.jpg" alt=""></td>
+                    <td>Traje Completo</td>
+                    <td>   <input type="number" id="cantidadTrajeCompleto" class="form-control" placeholder="Cantidad"  ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td><img src="imagenes/bazar-recre0-8.jpg" alt=""></td>
+                    <td>Prenda</td>
+                    <td> <input type="number" id="cantidadPPrenda" class="form-control" placeholder="Cantidad" ></td>
+                    
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td ><button type="button" class="btn btn-dark" id="agregarES"  data-toggle="modal" data-target="#exito">AGREGAR</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <div id="caja20" style="display: none;">
+        
+        
+        <p class="table-dark">LIMPIEZA HOGAR</p>
+
+        <div id="caja25">
+            <br>
+        <div id="caja26">
+          <table class="table table-hover" >
+                
+            <thead class="table-dark">
+                <tr><th colspan="4">Lista de Precios</th></tr>
+                <tr><th colspan="4">Lavado y Secado</th></tr>
+              
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Sabana</td>
+                <td style="width: 25%;"> $  2.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Cobertor</td>
+                <td> $  3.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Toalla</td>
+                <td> $  2.00 </td>
+              </tr>
+              <tr>
+                <td scope="row">Cortina </td>
+                <td> $  2.50 </td>
+              </tr>
+              <tr>
+                <td scope="row">Mantel </td>
+                <td> $  2.50 </td>
+              </tr>
+
+          </table>
+        </div>
+        <div id="caja27">
+          <p class="table-dark"> Servicios</p>
+          <div class="table-responsive-sm">
+            <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                    <th scope="col" style="width: 18%;"  ></th>
+                    <th scope="col" >Descripcion</th>
+                    <th style="width: 23%;" scope="col">Cantidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img src="imagenes/sabana-cama-cama-D_NQ_NP_818340-MLM31957931961_082019-F.jpg" alt=""></td>
+                    <td>Sabana</td>
+                    <td >   <input type="number" id="cantidadSabana" class="form-control" placeholder="Cantidad"  ></td>
+                    <td><img src="imagenes/3085001000478_1.png" alt=""></td>
+                    <td>Cortina</td>
+                    <td >   <input type="number" id="cantidadCortina" class="form-control" placeholder="Cantidad"  ></td>
+                  </tr>
+                  <tr>
+                    <td> <img src="imagenes/sd.png" alt=""></td>
+                    <td>Cobertor</td>
+                    <td>   <input type="number" id="cantidadCobertor" class="form-control" placeholder="Cantidad"  ></td>
+                    <td><img src="imagenes/816VnbIB9NL._SR500,500_.jpg" alt=""></td>
+                    <td>Mantel</td>
+                    <td >   <input type="number" id="cantidadMantel" class="form-control" placeholder="Cantidad"  ></td>
+                  </tr>
+                  <tr>
+                    <td><img src="imagenes/toalla-de-bano-100x150-algodon-400-gr-m2-sols-personalizada.jpg" alt=""></td>
+                    <td>Toalla</td>
+                    <td> <input type="number" id="cantidadToalla" class="form-control" placeholder="Cantidad" ></td>
+                    <td></td>
+                    <td></td>
+                    <td ><button type="button" class="btn btn-dark" id="agregarLH" data-toggle="modal" data-target="#exito" >AGREGAR</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+    <div id="caja21" style="display: none;">
+        <p class="table-dark">LAVANDERIA Y PLANCHADO</p>
+        <div id="caja28">
+          
+        <div id="caja29" >
+          
+            <table class="table table-hover" >
+                
+                <thead class="table-dark">
+                    <tr><th colspan="4">Lista de Precios</th></tr>
+                    <tr><th colspan="4">Lavado y Secado</th></tr>
+                  
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">Prenda <br>(Camisa, Pantalon,Camiseta)</td>
+                    <td style="width: 25%;"> $  0.30 </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Docena</td>
+                    <td> $  3.00 </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Ropa Interior <br> (Docena)</td>
+                    <td> $  1.50 </td>
+                  </tr>
+
+
+                  <thead class="table-dark">
+                    <tr><th colspan="4">Planchado</th></tr>
+                  
+                </thead>
+                <tbody>
+                    <tr>
+                      <td scope="row">Prenda <br>(Camisa, Pantalon,Camiseta, etc)</td>
+                      <td> $  0.50 </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Docena</td>
+                      <td> $  5.00 </td>
+                    </tr>
+                </tbody>
+                </tbody>
+              </table>
+        </div>
+        <div id="caja30">
+            <p class="table-dark"> Servicios</p>
+            <div class="table-responsive-sm">
+                <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="width: 18%;"  ></th>
+                        <th scope="col" >Descripcion</th>
+                        <th style="width: 20%;" scope="col">Cantidad</th>
+                        <th scope="col">Planchado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img src="imagenes/single-cartoon-folded-red-t-shirt-vector-29563120.jpg" alt=""></td>
+                        <td>Por prenda</td>
+                        <td >   <input type="number" id="cantidadPrendas" class="form-control" placeholder="Cantidad"  ></td>
+                        <td> <label for=""class="form-control"> <select name="form1" id="comboboxPlp" style=" border: 0px; " >
+                            <option>NO</option>
+                            <option>SI</option></label></td>
+                        
+                      </tr>
+                      <tr>
+                        <td> <img src="imagenes/ropa-apilada-doblada-dibujos-animados_18591-50936.jpg" alt=""></td>
+                        <td>Por Docena</td>
+                        <td>   <input type="number" id="cantidadDocenas" class="form-control" placeholder="Cantidad"  ></td>
+                        <td> <label for=""class="form-control"> <select name="form1" id="comboboxDlp" style=" border: 0px; " >
+                            <option>NO</option>
+                            <option>SI</option></label></td>
+                      </tr>
+                      <tr>
+                        <td><img src="imagenes/pngtree-pink-stripe-sock-stocking-png-image_442934.jpg" alt=""></td>
+                        <td>Ropa Interior</td>
+                        <td> <input type="number" id="cantidadRopaInterior" class="form-control" placeholder="Cantidad" ></td>
+                        <td><label for="" class="form-control">---</label></td>
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td ><button type="button" class="btn btn-dark" id="agregarLP" data-toggle="modal" data-target="#exito">AGREGAR</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+      
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<script src="firebase.js"></script>
+<script src="sesionIniciada.js"></script>
+
+
+<p></p>
+
+</body>
+<br>
+
+
+
+</div>
+
+<footer style="background-color:aliceblue;padding-bottom:10px ; padding-top: 9px; text-align: center;">
+&copy; <small >Derechos reservados Alexander Conteron, Sebastian Mayorga, Genesis Rubira, Javier Quishpe</small>
+<br>
+<medium >Lavanderia CMRQ</medium>
+
+</footer>
+
+
+</html>
